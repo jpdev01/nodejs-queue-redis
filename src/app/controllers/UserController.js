@@ -1,3 +1,5 @@
+import Mail from "../lib/mail";
+
 export default {
 
     async store(req, res) {
@@ -10,6 +12,13 @@ export default {
             password
         };
 
-        return res.json();
+        await Mail.sendMail({
+            from: 'Queue test <queue@gmail.com>',
+            to: `${name} <${email}>`,
+            subject: 'Cadastro de Usuário',
+            html: `Olá, ${name}, Bem-vindo ao sistema! :)`
+        });
+
+        return res.json(user);
     }
 }
