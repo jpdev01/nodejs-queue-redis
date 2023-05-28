@@ -5,6 +5,7 @@ Para testes em desenvolvimento foi usado o mailtrap.io, uma caixa de entrada/ser
 
 ![mailtrap.png](mailtrap.png)
 
+Como testar: 
 ```
 curl --request POST \
 --url http://localhost:3333/users \
