@@ -1,4 +1,5 @@
 import Mail from "../lib/mail";
+import Queue from "../lib/Queue";
 
 export default {
 
@@ -11,12 +12,7 @@ export default {
             password
         };
 
-        Mail.sendMail({
-            from: 'Queue test <queue@gmail.com>',
-            to: `${name} <${email}>`,
-            subject: 'Cadastro de Usuário',
-            html: `Olá, ${name}, Bem-vindo ao sistema! :)`
-        });
+        await Queue.add('RegistrationMail', { user });
 
         return res.json(user);
     }
